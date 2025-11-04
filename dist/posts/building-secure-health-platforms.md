@@ -1,6 +1,8 @@
 ---
 title: "Building Secure Health Platforms"
 date: "2025-01-20"
+series: "Security"
+tags: ["security", "encryption", "best-practices"]
 ---
 
 # Building Secure Health Platforms

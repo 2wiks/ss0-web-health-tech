@@ -1,6 +1,8 @@
 ---
 title: "The Future of Health Data"
 date: "2025-02-01"
+series: "Industry Insights"
+tags: ["interoperability", "AI", "privacy", "future"]
 ---
 
 # The Future of Health Data

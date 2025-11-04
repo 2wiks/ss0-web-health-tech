@@ -1,6 +1,8 @@
 ---
 title: "Welcome to Our Blog"
 date: "2025-01-15"
+series: "Getting Started"
+tags: ["introduction", "community", "announcements"]
 ---
 
 # Welcome to Our Blog
