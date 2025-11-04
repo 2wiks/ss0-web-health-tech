@@ -8,101 +8,123 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 215 25% 27%;
+    /* Light mode per spec */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 0 0% 0%;   /* #000000 */
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 210 100% 45%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 0%;            /* black button */
+    --primary-foreground: 0 0% 100%; /* white text */
 
-    --secondary: 180 45% 55%;
+    --secondary: 0 0% 43%;            /* medium gray text */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 30% 95%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 0 0% 98%;
+    --muted-foreground: 0 0% 43%;    /* #6E6E6E */
 
-    --accent: 175 50% 50%;
+    --accent: 0 0% 0%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --sage: 160 20% 70%;
+    --sage-foreground: 0 0% 0%;
+
+    --teal: 180 45% 45%;
+    --teal-foreground: 0 0% 100%;
+
+    --fintech: 250 60% 50%;
+    --fintech-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 25% 88%;
-    --input: 210 25% 88%;
-    --ring: 210 100% 45%;
+    --border: 0 0% 90%;   /* #E5E5E5 */
+    --input: 0 0% 90%;    /* input border */
+    --ring: 0 0% 0%;
 
-    --radius: 0.75rem;
+    --placeholder: 0 0% 55%;
+
+    --radius: 1.25rem;
     
-    /* Medical theme custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(210 100% 45%) 0%, hsl(180 45% 55%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 30% 98%) 100%);
-    --shadow-soft: 0 4px 20px -2px hsl(210 50% 70% / 0.15);
-    --shadow-card: 0 8px 30px -6px hsl(210 50% 60% / 0.2);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* No shadows in this design */
+    --gradient-teal-sage: none;
+    --gradient-white-blue: none;
+    --gradient-glass: none;
+    --shadow-glass: none;
+    --shadow-elevated: none;
+    --transition-smooth: all 0.3s ease;
+    --transition-spring: all 0.5s ease;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 98%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 0% 0%;
   }
 
   .dark {
-    --background: 215 30% 12%;
-    --foreground: 210 40% 98%;
+    /* Dark mode per spec */
+    --background: 0 0% 4%;    /* #0A0A0A */
+    --foreground: 0 0% 100%;  /* white */
 
-    --card: 215 25% 16%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 10%;         /* input bg #1A1A1A */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 215 25% 16%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 210 100% 55%;
+    --primary: 0 0% 11%;      /* #1C1C1C button */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 45% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 72%;           /* #B8B8B8 */
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 215 20% 20%;
-    --muted-foreground: 215 15% 65%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 72%;
 
-    --accent: 175 50% 40%;
+    --accent: 0 0% 18%;              /* hover ~ #2E2E2E */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50%;
+    --sage: 160 20% 70%;
+    --sage-foreground: 0 0% 0%;
+
+    --teal: 180 45% 45%;
+    --teal-foreground: 0 0% 100%;
+
+    --fintech: 250 60% 55%;
+    --fintech-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 25%;
-    --input: 215 20% 25%;
-    --ring: 210 100% 55%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(210 100% 35%) 0%, hsl(180 45% 35%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(215 25% 16%) 0%, hsl(215 25% 18%) 100%);
-    --shadow-soft: 0 4px 20px -2px hsl(210 50% 10% / 0.3);
-    --shadow-card: 0 8px 30px -6px hsl(210 50% 10% / 0.4);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 0 0% 18%;       /* #2E2E2E */
+    --input: 0 0% 18%;        /* input border */
+    --ring: 0 0% 72%;
+
+    --placeholder: 0 0% 48%;  /* #7A7A7A */
+
+    /* No shadows */
+    --gradient-teal-sage: none;
+    --gradient-white-blue: none;
+    --gradient-glass: none;
+    --shadow-glass: none;
+    --shadow-elevated: none;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 11%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 0 0% 72%;
   }
 }
 
@@ -113,22 +135,30 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: -0.01em;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
-}
 
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-in-out;
+  /* Placeholder styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: hsl(var(--placeholder));
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .glass-card {
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .elevated-card {
+    box-shadow: none;
+  }
+
+  /* Remove all shadows globally for a flat design */
+  [class*="shadow"] {
+    box-shadow: none !important;
   }
 }
