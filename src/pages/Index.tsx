@@ -49,10 +49,10 @@ const Index = () => {
           {/* Title */}
           <div className="space-y-6">
             <h1 className="text-6xl md:text-8xl font-extralight text-primary tracking-tighter">
-              hacking health
+              healthtech platform
             </h1>
             <p className="text-xl md:text-2xl font-light text-muted-foreground max-w-2xl mx-auto tracking-tight">
-              secure health data synchronization platform
+              innovative health technology solutions for modern healthcare
             </p>
           </div>
 
@@ -64,9 +64,9 @@ const Index = () => {
                 <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-teal flex items-center justify-center">
                   <Shield className="w-7 h-7 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-normal text-base mb-3 text-primary">secure authentication</h3>
+                <h3 className="font-normal text-base mb-3 text-primary">AI-powered insights</h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  protected with industry-standard token-based security
+                  advanced machine learning algorithms for health data analysis
                 </p>
               </div>
             </div>
@@ -77,9 +77,9 @@ const Index = () => {
                 <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-teal to-sage flex items-center justify-center">
                   <Activity className="w-7 h-7 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-normal text-base mb-3 text-teal">real-time sync</h3>
+                <h3 className="font-normal text-base mb-3 text-teal">IoT integration</h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  seamlessly synchronize health data across platforms
+                  seamlessly connect wearables and health devices
                 </p>
               </div>
             </div>
@@ -90,9 +90,9 @@ const Index = () => {
                 <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent to-sage flex items-center justify-center">
                   <Heart className="w-7 h-7 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-normal text-base mb-3 text-accent">multiple categories</h3>
+                <h3 className="font-normal text-base mb-3 text-accent">cloud infrastructure</h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  support for various health metrics and data types
+                  scalable and secure cloud-based health data platform
                 </p>
               </div>
             </div>

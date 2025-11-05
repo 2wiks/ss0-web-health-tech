@@ -22,7 +22,7 @@ function parseFrontmatter(markdown: string) {
   const frontmatter = match[1];
   const content = match[2];
   
-  const data: Record<string, string> = {};
+  const data: Record<string, string | string[]> = {};
   const lines = frontmatter.split('\n');
   
   lines.forEach(line => {
@@ -66,8 +66,8 @@ const BlogPost = () => {
         const { data, content } = parseFrontmatter(text);
         
         setPost({
-          title: data.title,
-          date: data.date,
+          title: Array.isArray(data.title) ? data.title[0] : data.title,
+          date: Array.isArray(data.date) ? data.date[0] : data.date,
           content
         });
       } catch (error) {
