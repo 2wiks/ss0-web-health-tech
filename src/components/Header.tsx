@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E5E5E5]">
       <div className="container mx-auto px-8 py-5">
         <div className="flex items-center justify-between">
           <div 
@@ -19,21 +19,21 @@ const Header = () => {
             <Button
               variant="ghost"
               onClick={() => navigate('/')}
-              className="text-sm font-light text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Home
             </Button>
             <Button
               variant="ghost"
               onClick={() => navigate('/community')}
-              className="text-sm font-light text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Community
             </Button>
             <Button
               variant="ghost"
               onClick={() => navigate('/login')}
-              className="text-sm font-light text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Login
             </Button>

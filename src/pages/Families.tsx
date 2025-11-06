@@ -185,7 +185,7 @@ const Families = () => {
               <p className="text-muted-foreground mb-8 font-light">create your first family group to get started</p>
               <Button 
                 onClick={() => setIsCreateDialogOpen(true)} 
-                className="gap-3 px-8 py-4 bg-gradient-to-r from-primary to-teal text-white rounded-2xl font-light hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="gap-3 px-6 py-3 bg-black text-white rounded-md font-normal hover:bg-[#1A1A1A] transition-colors"
               >
                 <Plus className="w-5 h-5" />
                 create your first family

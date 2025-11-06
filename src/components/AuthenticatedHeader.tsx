@@ -25,28 +25,28 @@ const AuthenticatedHeader = () => {
             <Button
               variant="ghost"
               onClick={() => navigate('/dashboard')}
-              className="text-sm font-light text-black hover:text-gray-600 transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Dashboard
             </Button>
             <Button
               variant="ghost"
               onClick={() => navigate('/families')}
-              className="text-sm font-light text-black hover:text-gray-600 transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Families
             </Button>
             <Button
               variant="ghost"
               onClick={() => navigate('/community')}
-              className="text-sm font-light text-black hover:text-gray-600 transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Community
             </Button>
             <Button
               variant="ghost"
               onClick={handleLogout}
-              className="text-sm font-light text-black hover:text-gray-600 transition-colors"
+              className="text-sm font-light text-black hover:text-black hover:bg-gray-100 transition-colors"
             >
               Logout
             </Button>
