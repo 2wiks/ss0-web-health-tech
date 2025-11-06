@@ -96,10 +96,10 @@ const BlogPost = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="min-h-screen bg-background flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-            <p className="text-gray-500">Loading post...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Loading post...</p>
           </div>
         </div>
       </>
@@ -110,16 +110,16 @@ const BlogPost = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="min-h-screen bg-background flex items-center justify-center">
           <div className="text-center max-w-md px-6">
-            <h1 className="text-3xl font-bold text-black mb-4">Post Not Found</h1>
-            <p className="text-gray-500 mb-8">
+            <h1 className="text-3xl font-bold text-foreground mb-4">Post Not Found</h1>
+            <p className="text-muted-foreground mb-8">
               The post you're looking for doesn't exist or couldn't be loaded.
               Check the browser console for details.
             </p>
             <button
               onClick={() => navigate('/community')}
-              className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
             >
               Back to Community
             </button>
@@ -132,20 +132,20 @@ const BlogPost = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background">
         <article className="max-w-4xl mx-auto px-8 py-32">
           <button
             onClick={() => navigate('/community')}
-            className="text-sm text-gray-500 hover:text-black mb-12 transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors"
           >
             ← Back to Community
           </button>
           
           <header className="mb-12">
-            <h1 className="text-3xl font-normal text-black mb-4 tracking-tight leading-tight">
+            <h1 className="text-3xl font-normal text-foreground mb-4 tracking-tight leading-tight">
               {post.title}
             </h1>
-            <time className="text-sm text-gray-500">
+            <time className="text-sm text-muted-foreground">
               {formatDate(post.date)}
             </time>
           </header>
@@ -154,17 +154,17 @@ const BlogPost = () => {
             <ReactMarkdown 
               remarkPlugins={[remarkGfm]}
               components={{
-                h1: ({node, ...props}) => <h1 className="text-2xl font-normal text-black mt-10 mb-5 tracking-tight" {...props} />,
-                h2: ({node, ...props}) => <h2 className="text-xl font-normal text-black mt-8 mb-3 tracking-tight" {...props} />,
-                h3: ({node, ...props}) => <h3 className="text-lg font-normal text-black mt-6 mb-2 tracking-tight" {...props} />,
-                p: ({node, ...props}) => <p className="text-base text-black leading-relaxed mb-5" {...props} />,
-                ul: ({node, ...props}) => <ul className="text-base text-black leading-relaxed mb-5 ml-6 list-disc" {...props} />,
-                ol: ({node, ...props}) => <ol className="text-base text-black leading-relaxed mb-5 ml-6 list-decimal" {...props} />,
+                h1: ({node, ...props}) => <h1 className="text-2xl font-normal text-foreground mt-10 mb-5 tracking-tight" {...props} />,
+                h2: ({node, ...props}) => <h2 className="text-xl font-normal text-foreground mt-8 mb-3 tracking-tight" {...props} />,
+                h3: ({node, ...props}) => <h3 className="text-lg font-normal text-foreground mt-6 mb-2 tracking-tight" {...props} />,
+                p: ({node, ...props}) => <p className="text-base text-foreground leading-relaxed mb-5" {...props} />,
+                ul: ({node, ...props}) => <ul className="text-base text-foreground leading-relaxed mb-5 ml-6 list-disc" {...props} />,
+                ol: ({node, ...props}) => <ol className="text-base text-foreground leading-relaxed mb-5 ml-6 list-decimal" {...props} />,
                 li: ({node, ...props}) => <li className="mb-2" {...props} />,
-                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-6 italic text-gray-700 my-6" {...props} />,
-                code: ({node, ...props}) => <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono" {...props} />,
-                pre: ({node, ...props}) => <pre className="bg-gray-100 p-4 rounded overflow-x-auto mb-6" {...props} />,
-                a: ({node, ...props}) => <a className="text-black underline hover:opacity-60 transition-opacity" {...props} />,
+                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-border pl-6 italic text-muted-foreground my-6" {...props} />,
+                code: ({node, ...props}) => <code className="bg-muted px-2 py-1 rounded text-sm font-mono text-foreground" {...props} />,
+                pre: ({node, ...props}) => <pre className="bg-muted p-4 rounded overflow-x-auto mb-6 text-foreground" {...props} />,
+                a: ({node, ...props}) => <a className="text-foreground underline hover:opacity-60 transition-opacity" {...props} />,
               }}
             >
               {post.content}

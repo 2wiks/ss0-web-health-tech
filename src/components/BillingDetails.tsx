@@ -8,8 +8,8 @@ export const BillingDetails = () => {
   const billingCycleEnd = "February 28, 2025";
 
   return (
-    <Card className="bg-white border-border/30 shadow-sm max-w-md mx-auto p-8">
-      <h2 className="text-xl font-medium text-foreground mb-8">Billing Details</h2>
+    <Card className="bg-card border-border/30 shadow-sm max-w-md mx-auto p-8">
+      <h2 className="text-xl font-medium text-card-foreground mb-8">Billing Details</h2>
       
       <div className="space-y-6">
         <div className="flex justify-between items-center py-4 border-b border-border/20">

@@ -110,8 +110,8 @@ const FamilyDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-black" />
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-foreground" />
       </div>
     );
   }
@@ -121,7 +121,7 @@ const FamilyDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <AuthenticatedHeader />
 
       {/* Main Content */}
@@ -142,10 +142,10 @@ const FamilyDetails = () => {
         <div className="max-w-6xl mx-auto mb-12">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl md:text-5xl font-normal text-black mb-2 tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
                 {family.name || 'Unnamed Family'}
               </h1>
-              <p className="text-lg font-normal" style={{ color: '#6E6E6E' }}>
+              <p className="text-lg font-normal text-muted-foreground">
                 Created {new Date(family.created_at).toLocaleDateString()} • {family.members.length} {family.members.length === 1 ? 'member' : 'members'}
               </p>
             </div>

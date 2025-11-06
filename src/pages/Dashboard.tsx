@@ -96,17 +96,17 @@ const Dashboard = () => {
   }, [metricConfigs]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <AuthenticatedHeader />
 
       {/* Main Content */}
       <main className="container mx-auto px-8 pt-32 pb-16">
         {/* Greeting */}
         <div className="max-w-6xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-normal text-black mb-2 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
             Hello, {displayName}
           </h1>
-          <p className="text-lg font-normal" style={{ color: '#6E6E6E' }}>
+          <p className="text-lg font-normal text-muted-foreground">
             Monitor your health metrics
           </p>
         </div>
@@ -119,21 +119,21 @@ const Dashboard = () => {
               return (
                 <div
                   key={index}
-                  className="group relative p-8 rounded-md bg-white border border-[#E5E5E5] hover:border-black transition-all duration-300"
+                  className="group relative p-8 rounded-md bg-card border border-border hover:border-primary transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-normal uppercase tracking-widest" style={{ color: '#6E6E6E' }}>
+                    <span className="text-xs font-normal uppercase tracking-widest text-muted-foreground">
                       {metric.label}
                     </span>
-                    <div className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-black" strokeWidth={1.5} />
+                    <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-foreground" strokeWidth={1.5} />
                     </div>
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-normal text-black tracking-tight">
+                    <span className="text-4xl font-normal text-card-foreground tracking-tight">
                       {metric.value ?? '—'}
                     </span>
-                    <span className="text-sm font-normal" style={{ color: '#6E6E6E' }}>
+                    <span className="text-sm font-normal text-muted-foreground">
                       {metric.unit}
                     </span>
                   </div>
@@ -145,7 +145,7 @@ const Dashboard = () => {
 
         {/* Health Categories */}
         <div className="max-w-6xl mx-auto mb-20">
-          <h2 className="text-2xl font-normal text-black mb-8 tracking-tight">Health Data Categories</h2>
+          <h2 className="text-2xl font-normal text-foreground mb-8 tracking-tight">Health Data Categories</h2>
           <HealthCategories />
         </div>
       </main>

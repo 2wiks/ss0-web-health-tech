@@ -88,17 +88,17 @@ const Families = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <AuthenticatedHeader />
 
       {/* Main Content */}
       <main className="container mx-auto px-8 pt-32 pb-16">
         {/* Greeting */}
         <div className="max-w-6xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-normal text-black mb-2 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
             Family Groups
           </h1>
-          <p className="text-lg font-normal" style={{ color: '#6E6E6E' }}>
+          <p className="text-lg font-normal text-muted-foreground">
             Manage your family health data
           </p>
         </div>
@@ -107,15 +107,15 @@ const Families = () => {
         <div className="max-w-6xl mx-auto mb-12">
           <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="gap-3 px-6 py-3 bg-black text-white rounded-md font-normal hover:bg-[#1A1A1A] transition-colors">
+              <Button className="gap-3 px-6 py-3 bg-primary text-primary-foreground rounded-md font-normal hover:bg-primary/90 transition-colors">
                 <Plus className="w-5 h-5" />
                 Create Family
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-white border border-[#E5E5E5] rounded-md">
+            <DialogContent className="bg-card border border-border rounded-md">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-normal text-black">Create New Family</DialogTitle>
-                <DialogDescription style={{ color: '#6E6E6E' }}>
+                <DialogTitle className="text-2xl font-normal text-card-foreground">Create New Family</DialogTitle>
+                <DialogDescription className="text-muted-foreground">
                   Create a new family group. You can add members now or later.
                 </DialogDescription>
               </DialogHeader>
@@ -185,7 +185,7 @@ const Families = () => {
               <p className="text-muted-foreground mb-8 font-light">create your first family group to get started</p>
               <Button 
                 onClick={() => setIsCreateDialogOpen(true)} 
-                className="gap-3 px-6 py-3 bg-black text-white rounded-md font-normal hover:bg-[#1A1A1A] transition-colors"
+                className="gap-3 px-6 py-3 bg-primary text-primary-foreground rounded-md font-normal hover:bg-primary/90 transition-colors"
               >
                 <Plus className="w-5 h-5" />
                 create your first family

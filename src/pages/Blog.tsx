@@ -105,14 +105,14 @@ const Blog = () => {
   return (
     <>
       {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background">
         <div className="max-w-[1200px] mx-auto px-8 py-24">
-          <h1 className="text-5xl font-normal text-black mb-8 tracking-tight">
+          <h1 className="text-5xl font-normal text-foreground mb-8 tracking-tight">
             Community
           </h1>
           
           {/* Minimalist Filter Bar */}
-          <div className="sticky top-20 bg-white z-10 pb-4 mb-6 border-b border-[#E5E5E5]">
+          <div className="sticky top-20 bg-background z-10 pb-4 mb-6 border-b border-border">
             <div className="flex flex-col md:flex-row gap-3">
               {/* Search Input - Primary */}
               <input
@@ -120,14 +120,14 @@ const Blog = () => {
                 placeholder="Search posts…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 px-4 py-3 bg-white border border-[#E5E5E5] text-black placeholder-gray-400 hover:bg-[#F7F7F7] focus:outline-none focus:border-black transition-colors"
+                className="flex-1 px-4 py-3 bg-background border border-input text-foreground placeholder:text-muted-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors"
               />
               
               {/* Series Dropdown */}
               <select
                 value={selectedSeries}
                 onChange={(e) => setSelectedSeries(e.target.value)}
-                className="px-4 py-3 bg-white border border-[#E5E5E5] text-black hover:bg-[#F7F7F7] focus:outline-none focus:border-black transition-colors cursor-pointer md:w-48"
+                className="px-4 py-3 bg-background border border-input text-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors cursor-pointer md:w-48"
               >
                 <option value="all">All Series</option>
                 {allSeries.map(series => (
@@ -139,18 +139,18 @@ const Blog = () => {
               <div className="relative md:w-48">
                 <button
                   onClick={() => setShowTagsDropdown(!showTagsDropdown)}
-                  className="w-full px-4 py-3 bg-white border border-[#E5E5E5] text-black hover:bg-[#F7F7F7] focus:outline-none focus:border-black transition-colors cursor-pointer text-left flex items-center justify-between"
+                  className="w-full px-4 py-3 bg-background border border-input text-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors cursor-pointer text-left flex items-center justify-between"
                 >
                   <span>{selectedTags.size === 0 ? 'All Tags' : `${selectedTags.size} selected`}</span>
-                  <span className="text-gray-500">▼</span>
+                  <span className="text-muted-foreground">▼</span>
                 </button>
                 
                 {showTagsDropdown && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#E5E5E5] max-h-64 overflow-y-auto z-20">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border max-h-64 overflow-y-auto z-20">
                     {allTags.map(tag => (
                       <label
                         key={tag}
-                        className="flex items-center px-4 py-2 hover:bg-[#F7F7F7] cursor-pointer"
+                        className="flex items-center px-4 py-2 hover:bg-muted/50 cursor-pointer"
                       >
                         <input
                           type="checkbox"
@@ -158,7 +158,7 @@ const Blog = () => {
                           onChange={() => toggleTag(tag)}
                           className="mr-2"
                         />
-                        <span className="text-black text-sm">{tag}</span>
+                        <span className="text-card-foreground text-sm">{tag}</span>
                       </label>
                     ))}
                   </div>
@@ -171,28 +171,28 @@ const Blog = () => {
           <div className="space-y-2">
             {filteredPosts.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-gray-500">No posts match the selected filters.</p>
+                <p className="text-muted-foreground">No posts match the selected filters.</p>
               </div>
             ) : (
               filteredPosts.map((post) => (
                 <article 
                   key={post.slug}
-                  className="cursor-pointer group py-6 border-b border-gray-200 hover:bg-gray-50 transition-colors px-4 -mx-4 rounded"
+                  className="cursor-pointer group py-6 border-b border-border hover:bg-muted/30 transition-colors px-4 -mx-4 rounded"
                   onClick={() => navigate(`/community/${post.slug}`)}
                 >
-                  <h2 className="text-2xl font-normal text-black mb-2 group-hover:underline">
+                  <h2 className="text-2xl font-normal text-foreground mb-2 group-hover:underline">
                     {post.title}
                   </h2>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <time>{formatDate(post.date)}</time>
                     <span>•</span>
-                    <span className="text-gray-700">{post.series}</span>
+                    <span className="text-foreground">{post.series}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {post.tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
+                        className="px-2 py-1 bg-muted text-foreground text-xs rounded"
                       >
                         {tag}
                       </span>
