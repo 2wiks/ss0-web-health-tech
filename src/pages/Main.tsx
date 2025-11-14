@@ -17,7 +17,17 @@ const Main = () => {
     const loadPosts = async () => {
       try {
         const posts = await loadRecentPosts(5); // Load the 5 most recent posts
-        setRecentPosts(posts);
+        
+        // Filter posts from the last week
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        
+        const postsFromLastWeek = posts.filter(post => {
+          const postDate = new Date(post.date);
+          return postDate >= oneWeekAgo;
+        });
+        
+        setRecentPosts(postsFromLastWeek);
       } catch (error) {
         console.error('Error loading posts:', error);
         setRecentPosts([]);
@@ -64,38 +74,40 @@ const Main = () => {
         {/* Explaining the Invisible - Visual Section */}
         <HealthVisuals />
 
-        {/* Recent Contributions Section */}
-        <section className="py-16 px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 tracking-tight text-foreground">
-              Latest from the Community
-            </h2>
-            <div className="space-y-6">
-              {recentPosts.map((post) => (
-                <article
-                  key={post.slug}
-                  onClick={() => navigate(`/community/${post.slug}`)}
-                  className="bg-card p-6 border border-border rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
-                >
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 tracking-tight text-card-foreground">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm mb-3 line-clamp-2 text-muted-foreground">
-                        {post.excerpt}
-                      </p>
-                      <time className="text-xs text-muted-foreground">
-                        {formatDate(post.date)}
-                      </time>
+        {/* Recent Contributions Section - Only show if there are posts from the last week */}
+        {recentPosts.length > 0 && (
+          <section className="py-16 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-12 tracking-tight text-foreground">
+                Latest from the Community
+              </h2>
+              <div className="space-y-6">
+                {recentPosts.map((post) => (
+                  <article
+                    key={post.slug}
+                    onClick={() => navigate(`/community/${post.slug}`)}
+                    className="bg-card p-6 border border-border rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold mb-2 tracking-tight text-card-foreground">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm mb-3 line-clamp-2 text-muted-foreground">
+                          {post.excerpt}
+                        </p>
+                        <time className="text-xs text-muted-foreground">
+                          {formatDate(post.date)}
+                        </time>
+                      </div>
+                      <ArrowRight className="w-5 h-5 flex-shrink-0 mt-1 text-muted-foreground" />
                     </div>
-                    <ArrowRight className="w-5 h-5 flex-shrink-0 mt-1 text-muted-foreground" />
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Bottom CTA Section */}
         <section className="py-20 px-6">
