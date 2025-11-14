@@ -34,7 +34,9 @@ const CategoryDetails = () => {
   const [showRawData, setShowRawData] = useState(false);
   const [isLoadingRaw, setIsLoadingRaw] = useState(false);
 
-  const categoryName = method ? categoryNames[method as HealthMethod] : 'Unknown Category';
+  const categoryName = (method && method in categoryNames) 
+    ? categoryNames[method as HealthMethod] 
+    : 'Unknown Category';
 
   const loadSummaryData = async (showRefreshingState = false) => {
     if (!method) return;
