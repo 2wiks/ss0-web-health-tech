@@ -3,14 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { authService } from '@/api/auth';
 import Header from '@/components/Header';
 import AuthenticatedHeader from '@/components/AuthenticatedHeader';
-
-interface Post {
-  slug: string;
-  title: string;
-  date: string;
-  series: string;
-  tags: string[];
-}
+import { loadAllPosts, type Post } from '@/utils/posts';
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -26,64 +19,7 @@ const Blog = () => {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        const postsList: Post[] = [
-          {
-            slug: 'circadian-longevity-index',
-            title: 'Your Circadian Longevity Index',
-            date: '2025-03-20',
-            series: 'Longevity Science',
-            tags: ['circadian', 'biological-age', 'chronobiology', 'longevity', 'healthspan']
-          },
-          {
-            slug: 'longitudinal-health-monitoring',
-            title: 'Your Health Trajectory, Measured Every Day',
-            date: '2025-03-18',
-            series: 'Health Monitoring',
-            tags: ['longitudinal', 'tracking', 'adaptation', 'continuous-monitoring', 'health-trajectory']
-          },
-          {
-            slug: 'clinical-grade-interpretation',
-            title: 'A Clinical Lens for Continuous Data',
-            date: '2025-03-15',
-            series: 'Clinical Applications',
-            tags: ['clinicians', 'longitudinal', 'diagnostics', 'preventive-care', 'medical-professionals']
-          },
-          {
-            slug: 'four-pillars-of-health-intelligence',
-            title: 'Four Pillars of Health Intelligence',
-            date: '2025-03-12',
-            series: 'System Architecture',
-            tags: ['physiology', 'circadian', 'clinical', 'decision-support', 'AI']
-          },
-          {
-            slug: 'evidence-based-longevity',
-            title: 'Scientific Rigor, Transparent Foundations',
-            date: '2025-03-10',
-            series: 'Research & Science',
-            tags: ['evidence-based', 'clinical-guidelines', 'peer-reviewed', 'research', 'longevity']
-          },
-          {
-            slug: 'the-future-of-health-data',
-            title: 'The Future of Health Data',
-            date: '2025-02-01',
-            series: 'Industry Insights',
-            tags: ['interoperability', 'AI', 'privacy', 'future']
-          },
-          {
-            slug: 'building-secure-health-platforms',
-            title: 'Building Secure Health Platforms',
-            date: '2025-01-20',
-            series: 'Security',
-            tags: ['security', 'encryption', 'best-practices']
-          },
-          {
-            slug: 'welcome-to-the-blog',
-            title: 'Welcome to Our Blog',
-            date: '2025-01-15',
-            series: 'Getting Started',
-            tags: ['introduction', 'community', 'announcements']
-          }
-        ];
+        const postsList = await loadAllPosts();
         
         setPosts(postsList);
         

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { authService } from '@/api/auth';
 import { Button } from '@/components/ui/button';
 import { 
@@ -26,12 +27,27 @@ const Index = () => {
     }
   }, [navigate]);
 
+  const sectionAnimation = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const cardHover = {
+    whileHover: { y: -4 },
+    transition: { type: "spring", stiffness: 160, damping: 18 }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       {/* 1. Hero Section */}
-      <section className="pt-40 pb-24 px-8">
+      <motion.section 
+        className="pt-40 pb-24 px-8"
+        {...sectionAnimation}
+      >
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-extralight text-primary tracking-tight leading-tight">
             Continuous Health Intelligence<br />for Precision Longevity
@@ -55,10 +71,13 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. What We Do */}
-      <section className="py-24 px-8 bg-muted/20">
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-8">
             From Continuous Monitoring to Clinical-Grade Interpretation
@@ -73,10 +92,279 @@ const Index = () => {
             Physiological Data → Clinical Interpretation → Personalized Actions → Long-term Outcomes
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 3. How It Works — Four Pillars */}
-      <section className="py-24 px-8">
+      {/* 3. Designed for Individuals, Clinics, and Organizations */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-16">
+            Designed for Individuals, Clinics, and Health Organizations
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              className="p-8 border border-border/50 rounded-3xl bg-card/60 text-center"
+              {...cardHover}
+            >
+              <Users className="w-12 h-12 mx-auto mb-6 text-primary" strokeWidth={1.5} />
+              <h3 className="text-xl font-light text-primary mb-4">For Individuals</h3>
+              <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                Personalized longevity plans informed by real physiology, not generic advice.
+              </p>
+            </motion.div>
+            <motion.div 
+              className="p-8 border border-border/50 rounded-3xl bg-card/60 text-center"
+              {...cardHover}
+            >
+              <Stethoscope className="w-12 h-12 mx-auto mb-6 text-primary" strokeWidth={1.5} />
+              <h3 className="text-xl font-light text-primary mb-4">For Clinicians</h3>
+              <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                Objective, structured, longitudinal insights that enhance diagnostic precision and follow-up quality.
+              </p>
+            </motion.div>
+            <motion.div 
+              className="p-8 border border-border/50 rounded-3xl bg-card/60 text-center"
+              {...cardHover}
+            >
+              <Heart className="w-12 h-12 mx-auto mb-6 text-primary" strokeWidth={1.5} />
+              <h3 className="text-xl font-light text-primary mb-4">For Health Systems & Insurers</h3>
+              <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                Scalable preventive monitoring, risk stratification, and population health intelligence.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 4. Explaining the Invisible */}
+      <motion.section 
+        className="py-24 px-6 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extralight tracking-tight text-primary text-center mb-4">
+            Explaining the Invisible
+          </h2>
+          <p className="text-sm md:text-base font-light text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+            Three holographic layers that turn continuous physiological signals into medically meaningful, human-centered intelligence.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Pillar 1 – Data Collection & Standardization */}
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/60 bg-card/80 overflow-hidden"
+              {...cardHover}
+            >
+              {/* HOLOGRAMA 1: Sensor constellation */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                {/* Halo */}
+                <motion.div
+                  className="absolute w-40 h-40 rounded-full border border-primary/25"
+                  animate={{ scale: [1, 1.06, 1], opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                  className="absolute w-28 h-28 rounded-full border border-primary/35"
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                />
+
+                {/* Core */}
+                <motion.div
+                  className="relative w-16 h-16 rounded-full bg-primary/15 border border-primary/60"
+                  animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="absolute inset-2 rounded-full bg-primary/30 blur-xl" />
+                </motion.div>
+
+                {/* Dispositivos orbitando */}
+                <motion.div
+                  className="absolute w-4 h-4 rounded-full bg-card border border-primary/60 flex items-center justify-center"
+                  style={{ top: "20%", left: "18%" }}
+                  animate={{ y: [0, -4, 0], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="w-2 h-2 rounded-full bg-primary/60" />
+                </motion.div>
+
+                <motion.div
+                  className="absolute w-5 h-5 rounded-full bg-card border border-primary/50 flex items-center justify-center"
+                  style={{ top: "18%", right: "20%" }}
+                  animate={{ y: [0, 4, 0], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                >
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary/50" />
+                </motion.div>
+
+                <motion.div
+                  className="absolute w-4 h-4 rounded-full bg-card border border-primary/50 flex items-center justify-center"
+                  style={{ bottom: "18%", left: "28%" }}
+                  animate={{ y: [0, -3, 0], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                >
+                  <div className="w-2 h-2 rounded-full bg-primary/50" />
+                </motion.div>
+
+                {/* Pequeño haz que entra al núcleo */}
+                <motion.div
+                  className="absolute h-[1px] w-24 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                  style={{ top: "52%", left: "10%" }}
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+
+              <div className="relative z-10 mt-40">
+                <h3 className="text-lg font-light text-primary mb-2">
+                  1. Data Collection & Standardization
+                </h3>
+                <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                  We securely collect signals from validated wearables, medical devices and clinical inputs, then normalize them into a unified health data model across sources and time.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Pillar 2 – Advanced Analysis & Medical Intelligence */}
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/60 bg-card/80 overflow-hidden"
+              {...cardHover}
+            >
+              {/* HOLOGRAMA 2: Body scanner */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                {/* Halo de datos */}
+                <motion.div
+                  className="absolute w-40 h-40 rounded-full border border-primary/20"
+                  animate={{ rotate: [0, 8, 0], opacity: [0.25, 0.45, 0.25] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                />
+
+                {/* Cuerpo estilizado */}
+                <div className="relative w-20 h-40 flex flex-col items-center">
+                  {/* Head */}
+                  <div className="w-10 h-10 rounded-full border border-primary/40 opacity-80 mb-1" />
+                  {/* Torso */}
+                  <div className="w-14 h-20 border border-primary/40 opacity-80 rounded-t-lg" />
+                  {/* Lower body hint */}
+                  <div className="w-10 h-6 border-t border-primary/25 opacity-60" />
+                </div>
+
+                {/* Barra de escaneo */}
+                <motion.div
+                  className="absolute w-28 h-[2px] bg-gradient-to-r from-transparent via-primary/70 to-transparent"
+                  animate={{ y: [-40, 40, -40] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+
+                {/* Puntos de dato */}
+                <motion.div
+                  className="absolute top-16 left-[52%] w-1.5 h-1.5 rounded-full bg-primary/70"
+                  animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                  className="absolute top-24 right-[26%] w-1 h-1 rounded-full bg-primary/60"
+                  animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+                />
+              </div>
+
+              <div className="relative z-10 mt-40">
+                <h3 className="text-lg font-light text-primary mb-2">
+                  2. Advanced Analysis & Medical Intelligence
+                </h3>
+                <p className="text-sm font-light text-muted-foreground leading-relaxed mb-2">
+                  Rule engines and medically-aligned AI models continuously interpret patterns in cardiovascular, circadian and behavioral signals to detect deviations and opportunities for intervention.
+                </p>
+                <p className="text-xs font-light text-muted-foreground leading-relaxed">
+                  Every day your body repairs itself — we measure how effectively that process is happening and where it can be improved.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Pillar 3 – Personalized Patient & Clinician Experience */}
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/60 bg-card/80 overflow-hidden"
+              {...cardHover}
+            >
+              {/* HOLOGRAMA 3: Human + devices conectados */}
+              <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+                {/* Holograma humano */}
+                <motion.div
+                  className="relative w-20 h-32 flex flex-col items-center"
+                  animate={{ opacity: [0.6, 0.9, 0.6] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="absolute inset-0 bg-primary/10 blur-lg rounded-full" />
+                  <div className="w-9 h-9 rounded-full border border-primary/35 opacity-80 mb-1 relative z-10" />
+                  <div className="w-14 h-16 border border-primary/35 opacity-80 rounded-t-lg relative z-10" />
+                  <div className="w-9 h-5 border-t border-primary/25 opacity-60 relative z-10" />
+                </motion.div>
+
+                {/* Pantallas */}
+                <div className="flex gap-3 relative z-10">
+                  {/* Mobile */}
+                  <div className="w-12 h-20 rounded-xl border border-primary/35 bg-gradient-to-b from-primary/15 to-transparent flex flex-col items-center justify-between p-2">
+                    <div className="w-full h-1 rounded-full bg-primary/20 mt-2" />
+                    <div className="w-8 h-2 rounded-full bg-primary/40" />
+                    <div className="w-full h-1 rounded-full bg-primary/20 mb-2" />
+                  </div>
+                  {/* Web */}
+                  <div className="w-20 h-16 rounded-xl border border-primary/25 bg-gradient-to-b from-primary/12 to-transparent flex flex-col justify-center gap-1.5 p-2">
+                    <div className="w-12 h-1 rounded-full bg-primary/30" />
+                    <div className="w-10 h-1 rounded-full bg-primary/22" />
+                    <div className="w-14 h-1 rounded-full bg-primary/25" />
+                  </div>
+                </div>
+
+                {/* Data pulse body → mobile → web */}
+                <svg className="absolute inset-0 w-full h-full opacity-45" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path
+                    d="M 26 50 Q 40 46 50 50"
+                    stroke="rgba(59,130,246,0.4)"
+                    strokeWidth="1"
+                    fill="none"
+                    strokeDasharray="3 3"
+                  />
+                  <path
+                    d="M 58 50 Q 70 46 82 50"
+                    stroke="rgba(59,130,246,0.4)"
+                    strokeWidth="1"
+                    fill="none"
+                    strokeDasharray="3 3"
+                  />
+                  <motion.circle
+                    r="1.5"
+                    fill="rgba(59,130,246,0.9)"
+                    animate={{ cx: ["26%", "50%", "58%", "82%"], cy: ["50%", "50%", "50%", "50%"], opacity: [0, 1, 1, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </svg>
+              </div>
+
+              <div className="relative z-10 mt-40">
+                <h3 className="text-lg font-light text-primary mb-2">
+                  3. Personalized Experience for Patients & Clinicians
+                </h3>
+                <p className="text-sm font-light text-muted-foreground leading-relaxed mb-2">
+                  A patient-facing mobile app and a professional web platform deliver the right information to the right person — from meaningful feedback for the individual to longitudinal views for the physician.
+                </p>
+                <p className="text-xs font-light text-muted-foreground leading-relaxed">
+                  We stay at your side continuously, turning complex data into clear, actionable insights for both the user and the medical team.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 5. How It Works — Four Pillars */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-16">
             How It Works — Four Pillars of the System
@@ -84,86 +372,101 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Pillar 1 */}
-            <div className="group relative p-8 rounded-3xl border border-border/50 hover:border-primary/30 transition-all duration-500">
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/50 bg-card/60"
+              {...cardHover}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-teal flex items-center justify-center">
+                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
                   <Activity className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-light text-primary mb-4">
                   1️⃣ Continuous Physiological Acquisition
                 </h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed mb-3">
-                  We gather high-frequency information from validated biosensors: heart rhythm dynamics, blood pressure trends, sleep architecture, activity cycles, and autonomic load.
+                  High-frequency data from validated biosensors: heart rhythm, blood pressure, sleep architecture, and autonomic load.
                 </p>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  These signals reveal how the body responds, adapts, and recovers in real environments.
+                  Signals reveal how your body responds, adapts, and recovers in real environments.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Pillar 2 */}
-            <div className="group relative p-8 rounded-3xl border border-border/50 hover:border-teal/30 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/50 bg-card/60"
+              {...cardHover}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-teal to-sage flex items-center justify-center">
+                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
                   <Clock className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-light text-teal mb-4">
+                <h3 className="text-xl font-light text-primary mb-4">
                   2️⃣ Circadian and Biological Rhythm Analysis
                 </h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed mb-3">
-                  Using advanced chronobiological models, we quantify the synchrony of your internal clocks — sleep-wake cycles, metabolic rhythms, activity patterns, and autonomic balance.
+                  Advanced chronobiological models quantify synchrony of internal clocks — sleep-wake cycles, metabolic rhythms, and autonomic balance.
                 </p>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  This allows us to estimate your <strong>biological age of circadian function</strong>, a sensitive marker of healthspan and resilience.
+                  Estimates your <strong>biological age of circadian function</strong>, a sensitive marker of healthspan and resilience.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Pillar 3 */}
-            <div className="group relative p-8 rounded-3xl border border-border/50 hover:border-primary/30 transition-all duration-500">
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/50 bg-card/60"
+              {...cardHover}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-teal flex items-center justify-center">
+                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
                   <FileText className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-light text-primary mb-4">
                   3️⃣ Clinical Knowledge Interpretation
                 </h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed mb-3">
-                  We convert unstructured symptoms, notes, and self-reports into structured medical concepts, enabling a clinical-grade understanding of your health status.
+                  Converts unstructured symptoms, notes, and self-reports into structured medical concepts.
                 </p>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  The system maps relevant patterns: cardiometabolic risks, lifestyle-associated stressors, inflammatory load, and recovery deficits.
+                  Maps relevant patterns: cardiometabolic risks, lifestyle stressors, inflammatory load, and recovery deficits.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Pillar 4 */}
-            <div className="group relative p-8 rounded-3xl border border-border/50 hover:border-teal/30 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <motion.div 
+              className="relative p-8 rounded-3xl border border-border/50 bg-card/60"
+              {...cardHover}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-teal to-sage flex items-center justify-center">
+                <div className="w-12 h-12 mb-6 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
                   <Brain className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-light text-teal mb-4">
+                <h3 className="text-xl font-light text-primary mb-4">
                   4️⃣ Personalized Medical Decision Support
                 </h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed mb-3">
-                  Our decision-support engine synthesizes your physiological profile with evidence-based medical guidelines to generate tailored recommendations.
+                  Synthesizes your physiological profile with evidence-based medical guidelines to generate tailored recommendations.
                 </p>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                  This includes adjustments in recovery strategies, movement protocols, stress regulation techniques, sleep optimization, nutrition timing, and long-term longevity interventions.
+                  Includes recovery strategies, movement protocols, stress regulation, sleep optimization, and longevity interventions.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 4. Circadian Longevity Index */}
-      <section className="py-24 px-8 bg-muted/20">
+      {/* 6. Circadian Longevity Index */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
             Your Circadian Longevity Index
@@ -179,16 +482,22 @@ const Index = () => {
               A lower index corresponds to improved resilience, metabolic stability, cardiovascular efficiency, and mood regulation.
             </p>
           </div>
-          <div className="pt-8 p-8 border border-border/50 rounded-3xl bg-card/50">
+          <motion.div 
+            className="pt-8 p-8 border border-border/50 rounded-3xl bg-card/60"
+            {...cardHover}
+          >
             <div className="text-2xl font-light text-primary">
               Chronological Age: 36 | Circadian Biological Age: 31
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 5. For Clinicians */}
-      <section className="py-24 px-8">
+      {/* 7. For Clinicians */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center">
             A Clinical Lens for Continuous Data
@@ -221,12 +530,15 @@ const Index = () => {
             This bridges the gap between continuous biosensing and evidence-based clinical practice.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 6. Built on Evidence */}
-      <section className="py-24 px-8 bg-muted/20">
+      {/* 8. Built on Evidence */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-teal flex items-center justify-center">
+          <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
             <BookOpen className="w-8 h-8 text-white" strokeWidth={1.5} />
           </div>
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
@@ -239,12 +551,15 @@ const Index = () => {
             Our system aligns with cardiometabolic, circadian, and behavioral health research, enabling interventions consistent with modern standards of preventive and longevity medicine.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 7. Longitudinal Evolution */}
-      <section className="py-24 px-8">
+      {/* 9. Longitudinal Evolution */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto space-y-8">
-          <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-teal to-sage flex items-center justify-center">
+          <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
             <TrendingUp className="w-8 h-8 text-white" strokeWidth={1.5} />
           </div>
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center">
@@ -261,48 +576,23 @@ const Index = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-8 max-w-2xl mx-auto">
             {['Energy stability', 'Sleep efficiency', 'Stress load reduction', 'Cardiovascular recovery', 'Circadian alignment', 'Overall sense of vitality'].map((item, idx) => (
-              <div key={idx} className="text-center p-4 border border-border/50 rounded-2xl bg-card/50">
+              <motion.div 
+                key={idx} 
+                className="text-center p-4 border border-border/50 rounded-2xl bg-card/60"
+                {...cardHover}
+              >
                 <p className="text-sm font-light text-muted-foreground">{item}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 8. Designed for Individuals, Clinics, and Organizations */}
-      <section className="py-24 px-8 bg-muted/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-16">
-            Designed for Individuals, Clinics, and Health Organizations
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 border border-border/50 rounded-3xl bg-card/50 text-center">
-              <Users className="w-12 h-12 mx-auto mb-6 text-primary" strokeWidth={1.5} />
-              <h3 className="text-xl font-light text-primary mb-4">For Individuals</h3>
-              <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                Personalized longevity plans informed by real physiology, not generic advice.
-              </p>
-            </div>
-            <div className="p-8 border border-border/50 rounded-3xl bg-card/50 text-center">
-              <Stethoscope className="w-12 h-12 mx-auto mb-6 text-teal" strokeWidth={1.5} />
-              <h3 className="text-xl font-light text-teal mb-4">For Clinicians</h3>
-              <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                Objective, structured, longitudinal insights that enhance diagnostic precision and follow-up quality.
-              </p>
-            </div>
-            <div className="p-8 border border-border/50 rounded-3xl bg-card/50 text-center">
-              <Heart className="w-12 h-12 mx-auto mb-6 text-primary" strokeWidth={1.5} />
-              <h3 className="text-xl font-light text-primary mb-4">For Health Systems & Insurers</h3>
-              <p className="text-sm font-light text-muted-foreground leading-relaxed">
-                Scalable preventive monitoring, risk stratification, and population health intelligence.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Partnerships & Trust */}
-      <section className="py-24 px-8">
+      {/* 10. Partnerships & Trust */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
             Built with the Healthcare Ecosystem
@@ -314,10 +604,13 @@ const Index = () => {
             Our mission is to integrate continuous sensing with medical-grade interpretation to support preventive care at scale.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 10. Call to Action */}
-      <section className="py-24 px-8 bg-muted/20">
+      {/* 11. Call to Action */}
+      <motion.section 
+        className="py-24 px-8 bg-background border-t border-border/40"
+        {...sectionAnimation}
+      >
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
             Experience Precision Longevity
@@ -348,7 +641,7 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
