@@ -7,8 +7,10 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { authService } from "@/api/auth";
 import { isDev } from "@/utils/env";
 import Index from "./pages/Index";
+import Landing from "./pages/Landing";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
+import Docs from "./pages/Docs";
 import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -19,6 +21,8 @@ import NotFound from "./pages/NotFound";
 import { FloatingMenu } from "./components/FloatingMenu";
 import { AddMealModal } from "./components/AddMealModal";
 import { MiBotonMini } from "./components/MiBotonMini";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { GlobalLayout } from "./components/GlobalLayout";
 
 const queryClient = new QueryClient();
 const SandboxPage = isDev ? lazy(() => import("./pages/Sandbox")) : null;
@@ -33,32 +37,35 @@ function AppContent() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/index" element={<Index />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/community" element={<Blog />} />
-        <Route path="/community/:slug" element={<BlogPost />} />
-        {/* Legacy redirects */}
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/category/:method" element={<CategoryDetails />} />
-        <Route path="/families" element={<Families />} />
-        <Route path="/families/:id" element={<FamilyDetails />} />
-        {isDev && SandboxPage && (
-          <Route
-            path="/sandbox"
-            element={
-              <Suspense fallback={null}>
-                <SandboxPage />
-              </Suspense>
-            }
-          />
-        )}
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <GlobalLayout>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/index" element={<Index />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/docs" element={<Docs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/community" element={<Blog />} />
+          <Route path="/community/:slug" element={<BlogPost />} />
+          {/* Legacy redirects */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/category/:method" element={<CategoryDetails />} />
+          <Route path="/families" element={<Families />} />
+          <Route path="/families/:id" element={<FamilyDetails />} />
+          {isDev && SandboxPage && (
+            <Route
+              path="/sandbox"
+              element={
+                <Suspense fallback={null}>
+                  <SandboxPage />
+                </Suspense>
+              }
+            />
+          )}
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </GlobalLayout>
 
       {showFAB && (
         <FloatingMenu onOpenNutrition={() => setIsMealModalOpen(true)} />
@@ -78,11 +85,13 @@ function AppContent() {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <ThemeProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
