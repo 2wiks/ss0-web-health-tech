@@ -1,14 +1,17 @@
 import { DownloadAction } from "@/components/DownloadAction";
-import { latestRelease, productName } from "@/data/releases";
+import { getLatestRelease, productName } from "@/lib/releases";
 import { Stack } from "@/components/layout/stack";
 
 const LandingPage = () => {
+  const latestRelease = getLatestRelease();
+
   return (
     <Stack className="min-h-[55vh] items-center justify-center">
       <DownloadAction
         productName={productName}
         version={latestRelease?.version ?? "0.0.0"}
-        historyHref={latestRelease?.docsHref ?? "/docs"}
+        historyHref="/docs"
+        downloadHref={latestRelease?.apk}
       />
     </Stack>
   );

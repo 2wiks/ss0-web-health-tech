@@ -11,6 +11,7 @@ import Landing from "./pages/Landing";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Docs from "./pages/Docs";
+import ReleaseDoc from "./pages/ReleaseDoc";
 import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -43,6 +44,7 @@ function AppContent() {
           <Route path="/index" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/releases/:version" element={<ReleaseDoc />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/community" element={<Blog />} />
           <Route path="/community/:slug" element={<BlogPost />} />
