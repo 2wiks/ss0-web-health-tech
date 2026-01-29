@@ -78,7 +78,7 @@ const Blog = () => {
       {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
       <div className="min-h-screen bg-background">
         <div className="max-w-[1200px] mx-auto px-8 py-24">
-          <h1 className="text-5xl font-normal text-foreground mb-8 tracking-tight">
+          <h1 className="text-4xl font-normal text-foreground mb-8 tracking-tight">
             Community
           </h1>
           

@@ -142,7 +142,7 @@ const FamilyDetails = () => {
         <div className="max-w-6xl mx-auto mb-12">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-normal text-foreground mb-2 tracking-tight">
                 {family.name || 'Unnamed Family'}
               </h1>
               <p className="text-lg font-normal text-muted-foreground">

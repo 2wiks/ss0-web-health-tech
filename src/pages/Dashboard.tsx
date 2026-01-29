@@ -103,7 +103,7 @@ const Dashboard = () => {
       <main className="container mx-auto px-8 pt-32 pb-16">
         {/* Greeting */}
         <div className="max-w-6xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-normal text-foreground mb-2 tracking-tight">
             Hello, {displayName}
           </h1>
           <p className="text-lg font-normal text-muted-foreground">
@@ -130,7 +130,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-normal text-card-foreground tracking-tight">
+                    <span className="text-3xl font-normal text-card-foreground tracking-tight">
                       {metric.value ?? '—'}
                     </span>
                     <span className="text-sm font-normal text-muted-foreground">

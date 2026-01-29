@@ -46,7 +46,7 @@ const IndexPage = () => {
       {/* 1. Hero Section */}
       <motion.section className="pt-40 pb-24 px-8" {...sectionAnimation}>
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-7xl font-extralight text-primary tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-6xl font-extralight text-primary tracking-tight leading-tight">
             Continuous Health Intelligence
             <br />
             for Precision Longevity
@@ -80,7 +80,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight text-center mb-8">
             From Continuous Monitoring to Clinical-Grade Interpretation
           </h2>
           <p className="text-lg font-light text-muted-foreground leading-relaxed text-center">
@@ -107,7 +107,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-16">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight text-center mb-16">
             Designed for Individuals, Clinics, and Health Organizations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -169,7 +169,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extralight tracking-tight text-primary text-center mb-4">
+          <h2 className="text-2xl md:text-3xl font-extralight tracking-tight text-primary text-center mb-4">
             Explaining the Invisible
           </h2>
           <p className="text-sm md:text-base font-light text-muted-foreground text-center max-w-2xl mx-auto mb-12">
@@ -468,7 +468,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center mb-16">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight text-center mb-16">
             How It Works — Four Pillars of the System
           </h2>
 
@@ -580,7 +580,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight">
             Your Circadian Longevity Index
           </h2>
           <div className="space-y-6">
@@ -615,7 +615,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight text-center">
             A Clinical Lens for Continuous Data
           </h2>
           <p className="text-lg font-light text-muted-foreground leading-relaxed text-center">
@@ -668,7 +668,7 @@ const IndexPage = () => {
           <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
             <BookOpen className="w-8 h-8 text-white" strokeWidth={1.5} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight">
             Scientific Rigor, Transparent Foundations
           </h2>
           <p className="text-lg font-light text-muted-foreground leading-relaxed">
@@ -692,7 +692,7 @@ const IndexPage = () => {
           <div className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-primary/40 flex items-center justify-center">
             <TrendingUp className="w-8 h-8 text-white" strokeWidth={1.5} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight text-center">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight text-center">
             Your Health Trajectory, Measured Every Day
           </h2>
           <p className="text-lg font-light text-muted-foreground leading-relaxed text-center">
@@ -735,7 +735,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight">
             Built with the Healthcare Ecosystem
           </h2>
           <p className="text-lg font-light text-muted-foreground leading-relaxed">
@@ -756,7 +756,7 @@ const IndexPage = () => {
         {...sectionAnimation}
       >
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-extralight text-primary tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extralight text-primary tracking-tight">
             Experience Precision Longevity
           </h2>
           <p className="text-xl font-light text-muted-foreground leading-relaxed">

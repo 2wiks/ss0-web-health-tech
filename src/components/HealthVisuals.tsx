@@ -362,7 +362,7 @@ const HealthVisuals = () => {
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-3xl md:text-4xl font-light mb-16 tracking-tight text-center text-foreground">
+        <h2 className="text-2xl md:text-3xl font-light mb-16 tracking-tight text-center text-foreground">
           Explaining the Invisible
         </h2>
 

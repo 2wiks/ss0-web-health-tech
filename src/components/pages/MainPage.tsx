@@ -55,7 +55,7 @@ const MainPage = () => {
             <div className="mb-8 flex justify-center">
               <Logo className="h-16 w-auto" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-foreground">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-foreground">
               Healthcare technology insights from the community
             </h1>
             <p className="text-lg mb-8 text-muted-foreground">
@@ -78,7 +78,7 @@ const MainPage = () => {
         {recentPosts.length > 0 && (
           <section className="py-16 px-6">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 tracking-tight text-foreground">
+              <h2 className="text-2xl md:text-3xl font-bold mb-12 tracking-tight text-foreground">
                 Latest from the Community
               </h2>
               <div className="space-y-6">
@@ -112,7 +112,7 @@ const MainPage = () => {
         {/* Bottom CTA Section */}
         <section className="py-20 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4 tracking-tight text-foreground">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-foreground">
               Join the Community
             </h2>
             <p className="text-lg mb-8 text-muted-foreground">

@@ -40,11 +40,11 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-background flex items-center justify-center px-6 py-24">
+      <div className="min-h-screen bg-background flex justify-center px-6 py-24">
         <div className="w-full max-w-md">
           {/* Title Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-normal text-foreground mb-3 tracking-tight">
+            <h1 className="text-3xl font-normal text-foreground mb-3 tracking-tight">
               Welcome back
             </h1>
             <p className="text-base text-muted-foreground">

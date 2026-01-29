@@ -13,12 +13,12 @@ export const Heading = ({
   <Comp
     className={cn(
       "text-foreground tracking-tight",
-      Comp === "h1" && "text-4xl md:text-5xl font-semibold",
-      Comp === "h2" && "text-3xl md:text-4xl font-semibold",
-      Comp === "h3" && "text-2xl md:text-3xl font-semibold",
-      Comp === "h4" && "text-xl font-semibold",
-      Comp === "h5" && "text-lg font-semibold",
-      Comp === "h6" && "text-base font-semibold",
+      Comp === "h1" && "text-3xl md:text-4xl font-semibold",
+      Comp === "h2" && "text-2xl md:text-3xl font-semibold",
+      Comp === "h3" && "text-xl md:text-2xl font-semibold",
+      Comp === "h4" && "text-lg font-semibold",
+      Comp === "h5" && "text-base font-semibold",
+      Comp === "h6" && "text-sm font-semibold",
       className
     )}
     {...props}

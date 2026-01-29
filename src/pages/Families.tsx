@@ -95,7 +95,7 @@ const Families = () => {
       <main className="container mx-auto px-8 pt-32 pb-16">
         {/* Greeting */}
         <div className="max-w-6xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-normal text-foreground mb-2 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-normal text-foreground mb-2 tracking-tight">
             Family Groups
           </h1>
           <p className="text-lg font-normal text-muted-foreground">
