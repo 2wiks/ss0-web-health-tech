@@ -14,10 +14,10 @@ export function GlobalLayout({ children, contentClassName }: GlobalLayoutProps) 
       <header className="flex justify-center pt-10 pb-6">
         <AppLogo />
       </header>
-      <main className={cn("flex-1", contentClassName)}>{children}</main>
-      <footer className="flex justify-center">
+      <main className={cn("flex-1 pb-20", contentClassName)}>{children}</main>
+      <div className="fixed inset-x-0 bottom-0 w-full bg-background">
         <BottomNav />
-      </footer>
+      </div>
     </div>
   );
 }
