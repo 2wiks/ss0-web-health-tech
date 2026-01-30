@@ -1,179 +1,48 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { authService } from '@/api/auth';
 import Header from '@/components/Header';
 import AuthenticatedHeader from '@/components/AuthenticatedHeader';
-import { loadAllPosts, type Post } from '@/utils/posts';
+
+const DISCORD_INVITE_URL = 'https://discord.gg/MZMVmVpV';
 
 const Blog = () => {
-  const navigate = useNavigate();
   const isAuthenticated = authService.isAuthenticated();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedSeries, setSelectedSeries] = useState<string>('all');
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
-  const [allTags, setAllTags] = useState<string[]>([]);
-  const [allSeries, setAllSeries] = useState<string[]>([]);
-  const [showTagsDropdown, setShowTagsDropdown] = useState(false);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const postsList = await loadAllPosts();
-        
-        setPosts(postsList);
-        
-        // Extract unique series and tags
-        const seriesSet = new Set(postsList.map(p => p.series));
-        const tagsSet = new Set(postsList.flatMap(p => p.tags));
-        
-        setAllSeries(Array.from(seriesSet).sort());
-        setAllTags(Array.from(tagsSet).sort());
-      } catch (error) {
-        console.error('Error loading posts:', error);
-      }
-    };
-
-    loadPosts();
-  }, []);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
-  const filteredPosts = posts.filter(post => {
-    // Search filter
-    const searchMatch = searchQuery === '' || 
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    
-    // Series filter
-    const seriesMatch = selectedSeries === 'all' || post.series === selectedSeries;
-    
-    // Tags filter
-    const tagsMatch = selectedTags.size === 0 || 
-      Array.from(selectedTags).some(tag => post.tags.includes(tag));
-    
-    return searchMatch && seriesMatch && tagsMatch;
-  });
-
-  const toggleTag = (tag: string) => {
-    const newSelectedTags = new Set(selectedTags);
-    if (newSelectedTags.has(tag)) {
-      newSelectedTags.delete(tag);
-    } else {
-      newSelectedTags.add(tag);
-    }
-    setSelectedTags(newSelectedTags);
-  };
 
   return (
     <>
       {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
-      <div className="min-h-screen bg-background">
-        <div className="max-w-[1200px] mx-auto px-8 py-24">
-          <h1 className="text-4xl font-normal text-foreground mb-8 tracking-tight">
-            Community
-          </h1>
-          
-          {/* Minimalist Filter Bar */}
-          <div className="sticky top-20 bg-background z-10 pb-4 mb-6 border-b border-border">
-            <div className="flex flex-col md:flex-row gap-3">
-              {/* Search Input - Primary */}
-              <input
-                type="text"
-                placeholder="Search posts…"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 px-4 py-3 bg-background border border-input text-foreground placeholder:text-muted-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors"
-              />
-              
-              {/* Series Dropdown */}
-              <select
-                value={selectedSeries}
-                onChange={(e) => setSelectedSeries(e.target.value)}
-                className="px-4 py-3 bg-background border border-input text-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors cursor-pointer md:w-48"
+      <div className="min-h-screen bg-background flex items-center justify-center px-6">
+        <a
+          href={DISCORD_INVITE_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="group w-full max-w-3xl rounded-3xl bg-white text-[#23272A] shadow-2xl px-8 py-10 sm:px-12 sm:py-12 md:px-16 md:py-16 transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-[#5865F2] text-white shadow-lg">
+              <svg
+                viewBox="0 0 127.14 96.36"
+                aria-hidden="true"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
               >
-                <option value="all">All Series</option>
-                {allSeries.map(series => (
-                  <option key={series} value={series}>{series}</option>
-                ))}
-              </select>
-              
-              {/* Tags Dropdown */}
-              <div className="relative md:w-48">
-                <button
-                  onClick={() => setShowTagsDropdown(!showTagsDropdown)}
-                  className="w-full px-4 py-3 bg-background border border-input text-foreground hover:bg-muted/50 focus:outline-none focus:border-primary transition-colors cursor-pointer text-left flex items-center justify-between"
-                >
-                  <span>{selectedTags.size === 0 ? 'All Tags' : `${selectedTags.size} selected`}</span>
-                  <span className="text-muted-foreground">▼</span>
-                </button>
-                
-                {showTagsDropdown && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border max-h-64 overflow-y-auto z-20">
-                    {allTags.map(tag => (
-                      <label
-                        key={tag}
-                        className="flex items-center px-4 py-2 hover:bg-muted/50 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={selectedTags.has(tag)}
-                          onChange={() => toggleTag(tag)}
-                          className="mr-2"
-                        />
-                        <span className="text-card-foreground text-sm">{tag}</span>
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
+                <path
+                  fill="currentColor"
+                  d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-.52,56.6,1.5,80.21a105.73,105.73,0,0,0,32.06,16.15,77.7,77.7,0,0,0,6.89-11.11,68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2,20.89,9.8,43.58,9.8,64.31,0,.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.06-16.16C130.31,52.65,123.91,28.75,107.7,8.07ZM42.45,65.69c-6.18,0-11.21-5.64-11.21-12.58S36.24,40.5,42.45,40.5c6.22,0,11.27,5.66,11.21,12.61S48.67,65.69,42.45,65.69Zm42.24,0c-6.18,0-11.21-5.64-11.21-12.58S78.48,40.5,84.69,40.5c6.22,0,11.26,5.66,11.21,12.61S90.91,65.69,84.69,65.69Z"
+                />
+              </svg>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+                Comunidad de Discord
+              </p>
+              <p className="mt-3 text-base sm:text-lg text-[#4F545C]">
+                Haz clic para unirte y conversar con la comunidad.
+              </p>
+              <span className="mt-6 inline-flex items-center justify-center rounded-full bg-[#5865F2] text-white px-6 py-3 text-lg font-semibold transition-colors group-hover:bg-[#4752C4]">
+                Entrar ahora
+              </span>
             </div>
           </div>
-
-          {/* Posts List */}
-          <div className="space-y-2">
-            {filteredPosts.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No posts match the selected filters.</p>
-              </div>
-            ) : (
-              filteredPosts.map((post) => (
-                <article 
-                  key={post.slug}
-                  className="cursor-pointer group py-6 border-b border-border hover:bg-muted/30 transition-colors px-4 -mx-4 rounded"
-                  onClick={() => navigate(`/community/${post.slug}`)}
-                >
-                  <h2 className="text-2xl font-normal text-foreground mb-2 group-hover:underline">
-                    {post.title}
-                  </h2>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <time>{formatDate(post.date)}</time>
-                    <span>•</span>
-                    <span className="text-foreground">{post.series}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {post.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-muted text-foreground text-xs rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))
-            )}
-          </div>
-        </div>
+        </a>
       </div>
     </>
   );
