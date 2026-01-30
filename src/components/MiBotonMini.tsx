@@ -47,13 +47,13 @@ export function MiBotonMini() {
   };
 
   return (
-    <div className="fixed bottom-3 left-3 z-40">
+    <div className="fixed bottom-6 left-6 z-40">
       <Button
         variant="black"
         aria-label="Alternar modo oscuro/claro"
         aria-pressed={isDark}
         onClick={handleToggle}
-        className="h-7 w-7 p-0 rounded-full opacity-20 hover:opacity-80 transition-opacity text-xs"
+        className="theme-toggle-sparkle h-10 w-10 p-0 rounded-full text-xs bg-white text-black dark:bg-black dark:text-white ring-2 ring-slate-200/90 transition-transform duration-200 hover:bg-white dark:hover:bg-black"
       >
         {isDark ? "☾" : "☀"}
       </Button>

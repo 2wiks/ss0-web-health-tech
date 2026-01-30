@@ -10,19 +10,19 @@ const Blog = () => {
   return (
     <>
       {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
-      <div className="min-h-screen bg-background flex items-center justify-center px-6">
+      <div className="min-h-screen bg-background text-foreground dark:bg-black dark:text-white flex justify-center px-4">
         <a
           href={DISCORD_INVITE_URL}
           target="_blank"
           rel="noreferrer"
-          className="group w-full max-w-3xl rounded-3xl bg-white text-[#23272A] shadow-2xl px-8 py-10 sm:px-12 sm:py-12 md:px-16 md:py-16 transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="group w-full max-w-md rounded-3xl bg-white text-[#23272A] shadow-2xl px-4 py-5 sm:px-5 sm:py-6 transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2  justify-center focus-visible:ring-offset-background dark:bg-[#0f1115] dark:text-white dark:focus-visible:ring-white dark:focus-visible:ring-offset-black"
         >
-          <div className="flex flex-col items-center gap-6">
-            <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-[#5865F2] text-white shadow-lg">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#5865F2] text-white shadow-lg">
               <svg
                 viewBox="0 0 127.14 96.36"
                 aria-hidden="true"
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+                className="w-10 h-10 sm:w-12 sm:h-12"
               >
                 <path
                   fill="currentColor"
@@ -31,14 +31,14 @@ const Blog = () => {
               </svg>
             </div>
             <div className="text-center">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                Comunidad de Discord
+              <p className="text-xl sm:text-2xl font-bold tracking-tight">
+                Discord Community
               </p>
-              <p className="mt-3 text-base sm:text-lg text-[#4F545C]">
-                Haz clic para unirte y conversar con la comunidad.
+              <p className="mt-2 text-sm sm:text-base text-muted-foreground dark:text-[#C7CDD6]">
+                Click to join and chat with the community.
               </p>
-              <span className="mt-6 inline-flex items-center justify-center rounded-full bg-[#5865F2] text-white px-6 py-3 text-lg font-semibold transition-colors group-hover:bg-[#4752C4]">
-                Entrar ahora
+              <span className="mt-2 inline-flex items-center justify-center rounded-full bg-[#5865F2] text-white px-4 py-2 text-sm sm:text-base font-semibold transition-colors group-hover:bg-[#4752C4]">
+                Join now
               </span>
             </div>
           </div>
