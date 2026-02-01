@@ -1,4 +1,4 @@
-import { Download } from "lucide-react";
+import { Download, LucideIcon } from "lucide-react";
 
 type DownloadActionProps = {
   productName: string;
@@ -7,6 +7,7 @@ type DownloadActionProps = {
   historyLabel?: string;
   downloadHref?: string;
   onDownload?: () => void;
+  icon?: LucideIcon;
 };
 
 export function DownloadAction({
@@ -16,6 +17,7 @@ export function DownloadAction({
   historyLabel = "View all versions and release notes",
   downloadHref,
   onDownload,
+  icon: Icon = Download,
 }: DownloadActionProps) {
   const handleClick = () => {
     if (onDownload) onDownload();
@@ -29,7 +31,7 @@ export function DownloadAction({
           className="flex h-14 w-14 items-center justify-center rounded-full border border-foreground/20 bg-transparent text-foreground transition-[border-color,opacity] hover:border-foreground/40 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background active:opacity-70"
           aria-label="Download APK"
         >
-          <Download className="h-6 w-6" strokeWidth={1.5} />
+          <Icon className="h-6 w-6" strokeWidth={1.5} />
         </a>
       ) : (
         <button
@@ -38,7 +40,7 @@ export function DownloadAction({
           className="flex h-14 w-14 items-center justify-center rounded-full border border-foreground/20 bg-transparent text-foreground transition-[border-color,opacity] hover:border-foreground/40 hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background active:opacity-70"
           aria-label="Download APK"
         >
-          <Download className="h-6 w-6" strokeWidth={1.5} />
+          <Icon className="h-6 w-6" strokeWidth={1.5} />
         </button>
       )}
       <div className="flex flex-col gap-1 text-xs text-muted-foreground">

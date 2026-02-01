@@ -44,7 +44,7 @@ function AppContent() {
           <Route path="/index" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/docs" element={<Docs />} />
-          <Route path="/releases/:version" element={<ReleaseDoc />} />
+          <Route path="/releases/:type/:version" element={<ReleaseDoc />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/community" element={<Blog />} />
           <Route path="/community/:slug" element={<BlogPost />} />

@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 
-export type ReleaseStatus = "stable" | "beta" | "deprecated";
+export type ReleaseStatus = "stable" | "beta" | "alpha" | "deprecated";
+export type ReleaseType = "phone" | "watch";
 
 export interface Release {
   version: string;
@@ -9,9 +10,10 @@ export interface Release {
   docs: string;
   status?: ReleaseStatus;
   content: string;
+  type: ReleaseType;
 }
 
-const releaseModules = import.meta.glob("/content/releases/*.md", {
+const releaseModules = import.meta.glob("/content/releases/**/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
@@ -28,7 +30,7 @@ const normalizeString = (value: unknown): string => {
 
 const normalizeStatus = (value: unknown): ReleaseStatus | undefined => {
   const status = normalizeString(value);
-  if (status === "stable" || status === "beta" || status === "deprecated") {
+  if (status === "stable" || status === "beta" || status === "alpha" || status === "deprecated") {
     return status;
   }
   return undefined;
@@ -54,7 +56,7 @@ const ensureBuffer = () => {
   }
 };
 
-const parseRelease = (raw: string): Release | null => {
+const parseRelease = (path: string, raw: string): Release | null => {
   ensureBuffer();
   const { data, content } = matter(raw);
   const version = normalizeString(data.version);
@@ -66,6 +68,8 @@ const parseRelease = (raw: string): Release | null => {
     return null;
   }
 
+  const type: ReleaseType = path.includes("/watch/") ? "watch" : "phone";
+
   return {
     version,
     releaseDate,
@@ -73,11 +77,12 @@ const parseRelease = (raw: string): Release | null => {
     docs,
     status: normalizeStatus(data.status),
     content: content.trim(),
+    type,
   };
 };
 
-const releases = Object.values(releaseModules)
-  .map(parseRelease)
+const releases = Object.entries(releaseModules)
+  .map(([path, content]) => parseRelease(path, content))
   .filter((release): release is Release => release !== null)
   .sort((a, b) => {
     const dateDiff =
@@ -86,7 +91,21 @@ const releases = Object.values(releaseModules)
   });
 
 export const getAllReleases = (): Release[] => releases;
-export const getLatestRelease = (): Release | undefined => releases[0];
-export const getReleaseByVersion = (version: string): Release | undefined =>
-  releases.find((release) => release.version === version);
+export const getPhoneReleases = (): Release[] =>
+  releases.filter((r) => r.type === "phone");
+export const getWatchReleases = (): Release[] =>
+  releases.filter((r) => r.type === "watch");
+
+export const getLatestRelease = (type: ReleaseType = "phone"): Release | undefined =>
+  releases.find((r) => r.type === type);
+
+export const getReleaseByVersion = (
+  version: string,
+  type?: ReleaseType
+): Release | undefined =>
+  releases.find(
+    (release) =>
+      release.version === version && (!type || release.type === type)
+  );
+
 export const productName = "Hacking Health";

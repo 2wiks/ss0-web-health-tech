@@ -1,14 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getReleaseByVersion } from "@/lib/releases";
+import { getReleaseByVersion, ReleaseType } from "@/lib/releases";
 import { PageContainer } from "@/components/layout/page-container";
 import { Stack } from "@/components/layout/stack";
 import { Heading, Text } from "@/components/ui/typography";
 
 const ReleaseDoc = () => {
-  const { version } = useParams<{ version: string }>();
-  const release = version ? getReleaseByVersion(version) : undefined;
+  const { type, version } = useParams<{ type: string; version: string }>();
+  const release =
+    version && type
+      ? getReleaseByVersion(version, type as ReleaseType)
+      : undefined;
 
   if (!release) {
     return (
@@ -37,7 +40,7 @@ const ReleaseDoc = () => {
             {release.releaseDate}
           </Text>
           <Heading as="h1" className="text-3xl font-medium">
-            Release {release.version}
+            Release {release.version} ({release.type})
           </Heading>
           {release.status && (
             <Text tone="muted" size="sm">

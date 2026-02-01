@@ -1,6 +1,10 @@
-import { getAllReleases } from "@/lib/releases";
+import { Release } from "@/lib/releases";
 
-export function ReleaseHistoryTable() {
+interface ReleaseHistoryTableProps {
+  releases: Release[];
+}
+
+export function ReleaseHistoryTable({ releases }: ReleaseHistoryTableProps) {
   return (
     <div className="w-full overflow-x-auto">
       <table className="w-full text-xs text-muted-foreground">
@@ -13,8 +17,12 @@ export function ReleaseHistoryTable() {
           </tr>
         </thead>
         <tbody className="leading-tight">
-          {getAllReleases().map((release) => (
-            <tr key={release.version} id={`v-${release.version}`} className="align-top">
+          {releases.map((release) => (
+            <tr
+              key={`${release.type}-${release.version}`}
+              id={`v-${release.type}-${release.version}`}
+              className="align-top"
+            >
               <td className="py-1 pr-4 text-foreground/90">{release.version}</td>
               <td className="py-1 pr-4">{release.releaseDate}</td>
               <td className="py-1 pr-4">

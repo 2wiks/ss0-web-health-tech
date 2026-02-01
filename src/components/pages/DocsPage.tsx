@@ -2,8 +2,12 @@ import { PageContainer } from "@/components/layout/page-container";
 import { Stack } from "@/components/layout/stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/typography";
 import { ReleaseHistoryTable } from "@/components/ReleaseHistoryTable";
+import { getPhoneReleases, getWatchReleases } from "@/lib/releases";
 
 const DocsPage = () => {
+  const phoneReleases = getPhoneReleases();
+  const watchReleases = getWatchReleases();
+
   return (
     <PageContainer>
       <Stack gap="xl" className="py-10">
@@ -17,16 +21,26 @@ const DocsPage = () => {
             unapologetically simple.
           </Text>
         </Stack>
-        <Stack gap="md">
+
+        <Stack gap="md" id="phone">
           <Heading as="h3" className="text-xl font-medium">
-            Download notes
+            Phone App Releases
           </Heading>
           <Text tone="muted">
-            APK distributions are shared for testing only. Use the release
-            history below to track the intent behind each build.
+            APK distributions for the mobile application.
           </Text>
+          <ReleaseHistoryTable releases={phoneReleases} />
         </Stack>
-        <ReleaseHistoryTable />
+
+        <Stack gap="md" id="watch">
+          <Heading as="h3" className="text-xl font-medium">
+            Watch App Releases
+          </Heading>
+          <Text tone="muted">
+            APK distributions for the watch application.
+          </Text>
+          <ReleaseHistoryTable releases={watchReleases} />
+        </Stack>
       </Stack>
     </PageContainer>
   );
