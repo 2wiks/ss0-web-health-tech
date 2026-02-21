@@ -1,7 +1,7 @@
 import axios from "axios";
 import { authService } from "@/api/auth";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://apihealth.echavarrias.com";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://hacking-health.teoechavarria.com";
 
 // Create axios instance with base configuration
 export const api = axios.create({
