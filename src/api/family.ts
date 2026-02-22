@@ -2,7 +2,7 @@ import { authService } from './auth';
 import { UserResponse, userService } from './user';
 import axios, { AxiosResponse } from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hacking-health.teoechavarria.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hacking-health-api.vercel.app/';
 
 // Request types
 export interface CreateFamilyRequest {

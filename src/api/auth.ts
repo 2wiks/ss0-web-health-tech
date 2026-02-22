@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hacking-health.teoechavarria.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hacking-health-api.vercel.app/';
 
 export interface LoginRequest {
   username: string;
