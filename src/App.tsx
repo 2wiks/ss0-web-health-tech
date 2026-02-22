@@ -8,7 +8,6 @@ import { authService } from "@/api/auth";
 import { isDev } from "@/utils/env";
 import Index from "./pages/Index";
 import Landing from "./pages/Landing";
-import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Docs from "./pages/Docs";
 import ReleaseDoc from "./pages/ReleaseDoc";
@@ -24,6 +23,8 @@ import { AddMealModal } from "./components/AddMealModal";
 import { MiBotonMini } from "./components/MiBotonMini";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { GlobalLayout } from "./components/GlobalLayout";
+
+import Kitchen from "./pages/Kitchen";
 
 const queryClient = new QueryClient();
 const SandboxPage = isDev ? lazy(() => import("./pages/Sandbox")) : null;
@@ -54,6 +55,7 @@ function AppContent() {
           <Route path="/category/:method" element={<CategoryDetails />} />
           <Route path="/families" element={<Families />} />
           <Route path="/families/:id" element={<FamilyDetails />} />
+          <Route path="/kitchen" element={<Kitchen />} />
           {isDev && SandboxPage && (
             <Route
               path="/sandbox"
