@@ -1,0 +1,31 @@
+{
+  "categories": [
+    "Vegetables",
+    "Fruits",
+    "Meat",
+    "Dairy",
+    "Grains",
+    "Other"
+  ],
+  "units": [
+    "g",
+    "kg",
+    "ml",
+    "l",
+    "pcs",
+    "tbsp",
+    "tsp"
+  ],
+  "sampleInventory": [
+    { "name": "Rice", "category": "Grains", "quantity": 500, "unit": "g" },
+    { "name": "Chicken breast", "category": "Meat", "quantity": 300, "unit": "g" },
+    { "name": "Tomatoes", "category": "Vegetables", "quantity": 4, "unit": "pcs" },
+    { "name": "Onion", "category": "Vegetables", "quantity": 2, "unit": "pcs" },
+    { "name": "Garlic", "category": "Vegetables", "quantity": 1, "unit": "pcs" },
+    { "name": "Olive oil", "category": "Other", "quantity": 50, "unit": "ml" },
+    { "name": "Eggs", "category": "Dairy", "quantity": 6, "unit": "pcs" },
+    { "name": "Milk", "category": "Dairy", "quantity": 1, "unit": "l" },
+    { "name": "Banana", "category": "Fruits", "quantity": 3, "unit": "pcs" },
+    { "name": "Salt", "category": "Other", "quantity": 1, "unit": "tbsp" }
+  ]
+}

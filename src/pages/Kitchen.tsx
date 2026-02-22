@@ -5,8 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Loader2, Plus, ChefHat } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Loader2, Plus, ChefHat, Database } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import kitchenDefaults from "@/data/kitchen-defaults.json";
 
 const Kitchen = () => {
   const { toast } = useToast();
@@ -92,6 +100,35 @@ const Kitchen = () => {
     }
   };
 
+  const handleLoadSampleData = async () => {
+    if (!userId) return;
+    const sample = (kitchenDefaults as { sampleInventory: { name: string; category: string; quantity: number; unit: string }[] }).sampleInventory;
+    try {
+      for (const item of sample) {
+        await kitchenService.addInventoryItem({
+          name: item.name,
+          category: item.category,
+          quantity: item.quantity,
+          unit: item.unit,
+          user_id: userId,
+        });
+      }
+      const items = await kitchenService.getInventory(userId);
+      setInventory(items);
+      toast({
+        title: "Success",
+        description: `Loaded ${sample.length} sample items into inventory.`,
+      });
+    } catch (error) {
+      console.error("Failed to load sample data", error);
+      toast({
+        title: "Error",
+        description: "Failed to load sample data.",
+        variant: "destructive",
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -123,14 +160,24 @@ const Kitchen = () => {
                       }
                       required
                     />
-                    <Input
-                      placeholder="Category"
-                      value={newItem.category}
-                      onChange={(e) =>
-                        setNewItem({ ...newItem, category: e.target.value })
+                    <Select
+                      value={newItem.category || undefined}
+                      onValueChange={(value) =>
+                        setNewItem({ ...newItem, category: value })
                       }
                       required
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(kitchenDefaults as { categories: string[] }).categories.map((cat) => (
+                          <SelectItem key={cat} value={cat}>
+                            {cat}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <Input
@@ -142,18 +189,38 @@ const Kitchen = () => {
                       }
                       required
                     />
-                    <Input
-                      placeholder="Unit (e.g., kg, pcs)"
-                      value={newItem.unit}
-                      onChange={(e) =>
-                        setNewItem({ ...newItem, unit: e.target.value })
+                    <Select
+                      value={newItem.unit || undefined}
+                      onValueChange={(value) =>
+                        setNewItem({ ...newItem, unit: value })
                       }
                       required
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Unit" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(kitchenDefaults as { units: string[] }).units.map((u) => (
+                          <SelectItem key={u} value={u}>
+                            {u}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
-                  <Button type="submit" className="w-full">
-                    <Plus className="mr-2 h-4 w-4" /> Add Item
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button type="submit" className="flex-1">
+                      <Plus className="mr-2 h-4 w-4" /> Add Item
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={handleLoadSampleData}
+                      title="Load sample inventory for testing"
+                    >
+                      <Database className="mr-2 h-4 w-4" /> Load Sample Data
+                    </Button>
+                  </div>
                 </form>
 
                 <div className="border rounded-md divide-y mt-4">
