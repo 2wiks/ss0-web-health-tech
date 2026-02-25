@@ -18,6 +18,7 @@ import CategoryDetails from "./pages/CategoryDetails";
 import Families from "./pages/Families";
 import FamilyDetails from "./pages/FamilyDetails";
 import NotFound from "./pages/NotFound";
+import Interests from "./pages/Interests";
 import { FloatingMenu } from "./components/FloatingMenu";
 import { AddMealModal } from "./components/AddMealModal";
 import { MiBotonMini } from "./components/MiBotonMini";
@@ -56,6 +57,7 @@ function AppContent() {
           <Route path="/families" element={<Families />} />
           <Route path="/families/:id" element={<FamilyDetails />} />
           <Route path="/kitchen" element={<Kitchen />} />
+          <Route path="/interests" element={<Interests />} />
           {isDev && SandboxPage && (
             <Route
               path="/sandbox"

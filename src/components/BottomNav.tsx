@@ -29,6 +29,12 @@ export function BottomNav() {
         >
           Login
         </Link>
+        <Link
+          to="/interests"
+          className="hover:text-foreground transition-colors focus:outline-none focus-visible:underline"
+        >
+          Intereses
+        </Link>
       </nav>
     </PageContainer>
   );
