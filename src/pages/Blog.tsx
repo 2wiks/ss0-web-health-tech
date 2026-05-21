@@ -1,15 +1,11 @@
-import { authService } from '@/api/auth';
 import Header from '@/components/Header';
-import AuthenticatedHeader from '@/components/AuthenticatedHeader';
 
 const DISCORD_INVITE_URL = 'https://discord.gg/MZMVmVpV';
 
 const Blog = () => {
-  const isAuthenticated = authService.isAuthenticated();
-
   return (
     <>
-      {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
+      <Header />
       <div className="min-h-screen bg-background text-foreground dark:bg-black dark:text-white flex justify-center px-4">
         <a
           href={DISCORD_INVITE_URL}

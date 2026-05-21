@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { authService } from "@/api/auth";
 import { Button } from "@/components/ui/button";
 import {
   Activity,
@@ -20,12 +18,6 @@ import Header from "@/components/Header";
 
 const IndexPage = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (authService.isAuthenticated()) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
 
   const sectionAnimation = {
     initial: { opacity: 0, y: 40 },
@@ -58,17 +50,17 @@ const IndexPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/community")}
               className="px-8 py-3 bg-primary text-primary-foreground rounded-md font-light hover:bg-primary/90 transition-colors"
             >
-              Request Early Access
+              Join the Community
             </Button>
             <Button
               variant="outline"
-              onClick={() => navigate("/community")}
+              onClick={() => navigate("/docs")}
               className="px-8 py-3 border border-border rounded-md font-light hover:bg-muted/50 transition-colors"
             >
-              For Medical Partners
+              View Documentation
             </Button>
           </div>
         </div>
@@ -766,24 +758,17 @@ const IndexPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/community")}
               className="px-8 py-3 bg-primary text-primary-foreground rounded-md font-light hover:bg-primary/90 transition-colors"
             >
-              Join the Pilot Program
+              Join the Community
             </Button>
             <Button
               variant="outline"
-              onClick={() => navigate("/community")}
+              onClick={() => navigate("/docs")}
               className="px-8 py-3 border border-border rounded-md font-light hover:bg-muted/50 transition-colors"
             >
-              Partner With Us
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/login")}
-              className="px-8 py-3 font-light hover:bg-muted/50 transition-colors"
-            >
-              For Medical Organizations
+              View Documentation
             </Button>
           </div>
         </div>

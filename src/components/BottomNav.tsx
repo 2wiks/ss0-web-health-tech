@@ -23,18 +23,6 @@ export function BottomNav() {
         >
           Community
         </Link>
-        <Link
-          to="/login"
-          className="hover:text-foreground transition-colors focus:outline-none focus-visible:underline"
-        >
-          Login
-        </Link>
-        <Link
-          to="/interests"
-          className="hover:text-foreground transition-colors focus:outline-none focus-visible:underline"
-        >
-          Intereses
-        </Link>
       </nav>
     </PageContainer>
   );

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "@/api/auth";
 import Header from "@/components/Header";
-import AuthenticatedHeader from "@/components/AuthenticatedHeader";
 import { Logo } from "@/components/Logo";
 import { ArrowRight } from "lucide-react";
 import HealthVisuals from "@/components/HealthVisuals";
@@ -10,7 +8,6 @@ import { loadRecentPosts, type Post } from "@/utils/posts";
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const isAuthenticated = authService.isAuthenticated();
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -47,7 +44,7 @@ const MainPage = () => {
 
   return (
     <>
-      {isAuthenticated ? <AuthenticatedHeader /> : <Header />}
+      <Header />
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="pt-32 pb-16 px-6">
@@ -120,10 +117,10 @@ const MainPage = () => {
               technology
             </p>
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/community")}
               className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-normal hover:bg-primary/90 transition-colors"
             >
-              Get Started
+              Explore Community Insights
             </button>
           </div>
         </section>
