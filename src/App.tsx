@@ -11,6 +11,7 @@ import Docs from "./pages/Docs";
 import ReleaseDoc from "./pages/ReleaseDoc";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Interest from "./pages/Interest";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { GlobalLayout } from "./components/GlobalLayout";
@@ -28,6 +29,7 @@ function AppContent() {
         <Route path="/releases/:type/:version" element={<ReleaseDoc />} />
         <Route path="/community" element={<Blog />} />
         <Route path="/community/:slug" element={<BlogPost />} />
+        <Route path="/interes" element={<Interest />} />
         {/* Legacy redirects */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
